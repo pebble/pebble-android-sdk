@@ -11,7 +11,7 @@ import android.util.Base64;
 import android.util.Log;
 import com.getpebble.android.kit.Constants.*;
 import com.getpebble.android.kit.util.PebbleDictionary;
-import com.getpebble.android.kit.guava.UnsignedInteger;
+import com.google.common.primitives.UnsignedInteger;
 import org.json.JSONException;
 
 import java.util.UUID;
