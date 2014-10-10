@@ -71,9 +71,22 @@ Make sure that you also include a reference to the Sonatype OSS Repository:
         maven { url "https://oss.sonatype.org/content/groups/public/" }
     }
 
+### Using Eclipse
+
+To use PebbleKit in the Eclipse IDE you must import the `.jar` file that contains the PebbleKit Android SDK as well as some dependencies. To install, follow the instructions below:
+
+1. Download the `.jar` file from 
+[Sonatype](https://oss.sonatype.org/service/local/repositories/releases/content/com/getpebble/pebblekit/2.5.1/pebblekit-2.5.1.jar).
+
+2. Add the file to your Android project in the `libs` folder alongside the `AndroidManifest.xml` file. This should automatically add it to your build path after refreshing the Android project. If not (or you saved it elsewhere) right-click the file and choose Build Path->Add to Build Path.
+
+You can now use PebbleKit in your Eclipse Android project!
+
 ### Using PebbleKit Android library directly
 
 Finally you can also [download the AAR file][aar-download] for PebbleKit Android and add it directly into your project.
+
+*Note: The AAR file is not Eclipse compatible.*
 
 ## Changelog
 
