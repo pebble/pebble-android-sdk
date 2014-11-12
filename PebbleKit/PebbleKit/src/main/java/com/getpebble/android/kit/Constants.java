@@ -70,7 +70,7 @@ public final class Constants {
     /**
      * Intent broadcast from pebble.apk containing a unit of data from a data log.
      */
-    public static final String INTENT_DL_RECEIVE_DATA = "com.getpebble.action.dl.RECEIVE_DATA";
+    public static final String INTENT_DL_RECEIVE_DATA = "com.getpebble.action.dl.RECEIVE_DATA_NEW";
 
     /**
      * Intent broadcast to pebble.apk implicitly when a unit of data from a data log is received.
@@ -85,7 +85,7 @@ public final class Constants {
     /**
      * Intent broadcast from pebble.apk indicating the session has finished.
      */
-    public static final String INTENT_DL_FINISH_SESSION = "com.getpebble.action.dl.FINISH_SESSION";
+    public static final String INTENT_DL_FINISH_SESSION = "com.getpebble.action.dl.FINISH_SESSION_NEW";
 
     /**
      * The UUID corresponding to Pebble's built-in "Sports" application.

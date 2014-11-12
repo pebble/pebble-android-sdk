@@ -15,8 +15,28 @@ android {
 }
 
 dependencies {
-    compile 'com.google.guava:guava:14.0.1' // intent-based data logging requires exactly this version
 }
 
-
 apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
+
+// Also generate a JAR with our dependencies in it (for Eclipse users)
+// Thanks to: https://gist.github.com/kellyfj/9666950
+android.libraryVariants.all { variant ->
+  def task = project.tasks.create "jar${name.capitalize()}", Jar
+  task.dependsOn variant.javaCompile
+
+  // Include Java classes
+  task.from variant.javaCompile.destinationDir
+
+  // Include dependent jars with some exceptions
+  task.from configurations.compile.findAll {
+            it.getName() != 'android.jar' && !it.getName().startsWith('junit') && !it.getName().startsWith('hamcrest')
+        }.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+
+  // Add a classifier to the Eclipse JAR. This is extremely important to avoid the JAR
+  // becoming the default artifact (and the type) of this project when pushed to Sonatype.
+  task.classifier = "eclipse"
+  artifacts.add('archives', task);
+}

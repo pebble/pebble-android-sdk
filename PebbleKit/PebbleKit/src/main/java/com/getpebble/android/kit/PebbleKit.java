@@ -11,7 +11,6 @@ import android.util.Base64;
 import android.util.Log;
 import com.getpebble.android.kit.Constants.*;
 import com.getpebble.android.kit.util.PebbleDictionary;
-import com.google.common.primitives.UnsignedInteger;
 import org.json.JSONException;
 
 import java.util.UUID;
@@ -97,14 +96,20 @@ public final class PebbleKit {
      *         false if the Pebble application is not installed on the user's handset.
      */
     public static boolean isWatchConnected(final Context context) {
-        Cursor c =
-                context.getContentResolver().query(
-                        Uri.parse("content://com.getpebble.android.provider/state"), null, null,
-                        null, null);
-        if (c == null || !c.moveToNext()) {
-            return false;
-        }
-        return c.getInt(KIT_STATE_COLUMN_CONNECTED) == 1;
+		Cursor c = null;
+		try {
+			c = context.getContentResolver().query(
+							Uri.parse("content://com.getpebble.android.provider/state"), null, null,
+							null, null);
+			if (c == null || !c.moveToNext()) {
+				return false;
+			}
+			return c.getInt(KIT_STATE_COLUMN_CONNECTED) == 1;
+		} finally {
+			if (c != null) {
+				c.close();
+			}
+		}
     }
 
     /**
@@ -120,14 +125,20 @@ public final class PebbleKit {
      *         no Pebble is currently connected to the handset.
      */
     public static boolean areAppMessagesSupported(final Context context) {
-        Cursor c =
-                context.getContentResolver().query(
+        Cursor c = null;
+		try {
+            c = context.getContentResolver().query(
                         Uri.parse("content://com.getpebble.android.provider/state"), null, null,
                         null, null);
-        if (c == null || !c.moveToNext()) {
-            return false;
-        }
-        return c.getInt(KIT_STATE_COLUMN_APPMSG_SUPPORT) == 1;
+			if (c == null || !c.moveToNext()) {
+				return false;
+			}
+			return c.getInt(KIT_STATE_COLUMN_APPMSG_SUPPORT) == 1;
+		} finally {
+			if (c != null) {
+				c.close();
+			}
+		}
     }
 
     
@@ -143,20 +154,26 @@ public final class PebbleKit {
      *         a FirmwareVersionObject containing info on the watch FW version
      */
     public static FirmwareVersionInfo getWatchFWVersion(final Context context) {
-        Cursor c =
-                context.getContentResolver().query(
+        Cursor c = null;
+		try {
+            c = context.getContentResolver().query(
                         Uri.parse("content://com.getpebble.android.provider/state"), null, null,
                         null, null);
-        if (c == null || !c.moveToNext()) {
-            return null;
-        }
-        
-        int majorVersion = c.getInt(KIT_STATE_COLUMN_VERSION_MAJOR);
-        int minorVersion = c.getInt(KIT_STATE_COLUMN_VERSION_MINOR);
-        int pointVersion = c.getInt(KIT_STATE_COLUMN_VERSION_POINT);
-        String versionTag = c.getString(KIT_STATE_COLUMN_VERSION_TAG);
-        
-        return new FirmwareVersionInfo(majorVersion, minorVersion, pointVersion, versionTag);
+			if (c == null || !c.moveToNext()) {
+				return null;
+			}
+			
+			int majorVersion = c.getInt(KIT_STATE_COLUMN_VERSION_MAJOR);
+			int minorVersion = c.getInt(KIT_STATE_COLUMN_VERSION_MINOR);
+			int pointVersion = c.getInt(KIT_STATE_COLUMN_VERSION_POINT);
+			String versionTag = c.getString(KIT_STATE_COLUMN_VERSION_TAG);
+			
+			return new FirmwareVersionInfo(majorVersion, minorVersion, pointVersion, versionTag);
+		} finally {
+			if (c != null) {
+				c.close();
+			}
+		}
     }
 
     /**
@@ -172,14 +189,20 @@ public final class PebbleKit {
      *         no Pebble is currently connected to the handset.
      */
     public static boolean isDataLoggingSupported(final Context context) {
-        Cursor c =
-                context.getContentResolver().query(
+        Cursor c = null;
+		try {
+            c = context.getContentResolver().query(
                         Uri.parse("content://com.getpebble.android.provider/state"),
                         null, null, null, null);
-        if (c == null || !c.moveToNext()) {
-            return false;
-        }
-        return c.getInt(KIT_STATE_COLUMN_DATALOGGING_SUPPORT) == 1;
+			if (c == null || !c.moveToNext()) {
+				return false;
+			}
+			return c.getInt(KIT_STATE_COLUMN_DATALOGGING_SUPPORT) == 1;
+		} finally {
+			if (c != null) {
+				c.close();
+			}
+		}
     }
 
     /**
@@ -671,8 +694,8 @@ public final class PebbleKit {
          *         Thrown if data is received and this handler is not implemented.
          */
         public void receiveData(final Context context, UUID logUuid,
-                                final UnsignedInteger timestamp, final UnsignedInteger tag,
-                                final UnsignedInteger data) {
+                                final Long timestamp, final Long tag,
+                                final Long data) {
             throw new UnsupportedOperationException("UnsignedInteger handler not implemented");
 
         }
@@ -694,7 +717,7 @@ public final class PebbleKit {
          *         Thrown if data is received and this handler is not implemented.
          */
         public void receiveData(final Context context, UUID logUuid,
-                                final UnsignedInteger timestamp, final UnsignedInteger tag,
+                                final Long timestamp, final Long tag,
                                 final byte[] data) {
             throw new UnsupportedOperationException("Byte array handler not implemented");
         }
@@ -716,7 +739,7 @@ public final class PebbleKit {
          *         Thrown if data is received and this handler is not implemented.
          */
         public void receiveData(final Context context, UUID logUuid,
-                                final UnsignedInteger timestamp, final UnsignedInteger tag, final int data) {
+                                final Long timestamp, final Long tag, final int data) {
             throw new UnsupportedOperationException("int handler not implemented");
 
         }
@@ -733,13 +756,13 @@ public final class PebbleKit {
          * @param tag
          *         The user-defined tag for the corresponding data log.
          */
-        public void onFinishSession(final Context context, UUID logUuid, final UnsignedInteger timestamp,
-                                    final UnsignedInteger tag) {
+        public void onFinishSession(final Context context, UUID logUuid, final Long timestamp,
+                                    final Long tag) {
             // Do nothing by default
         }
 
         private void handleReceiveDataIntent(final Context context, final Intent intent, final UUID logUuid,
-                                             final UnsignedInteger timestamp, final UnsignedInteger tag) {
+                                             final Long timestamp, final Long tag) {
             final int dataId = intent.getIntExtra(PBL_DATA_ID, -1);
             if (dataId < 0) throw new IllegalArgumentException();
 
@@ -763,7 +786,7 @@ public final class PebbleKit {
                     receiveData(context, logUuid, timestamp, tag, bytes);
                     break;
                 case UINT:
-                    UnsignedInteger uint = (UnsignedInteger) intent.getSerializableExtra(PBL_DATA_OBJECT);
+                    Long uint = (Long) intent.getSerializableExtra(PBL_DATA_OBJECT);
                     if (uint == null) {
                         throw new IllegalArgumentException();
                     }
@@ -791,7 +814,7 @@ public final class PebbleKit {
         }
 
         private void handleFinishSessionIntent(final Context context, final Intent intent, final UUID logUuid,
-                                               final UnsignedInteger timestamp, final UnsignedInteger tag) {
+                                               final Long timestamp, final Long tag) {
             onFinishSession(context, logUuid, timestamp, tag);
         }
 
@@ -809,16 +832,16 @@ public final class PebbleKit {
 
             try {
                 final UUID logUuid;
-                final UnsignedInteger timestamp;
-                final UnsignedInteger tag;
+                final Long timestamp;
+                final Long tag;
 
                 logUuid = (UUID) intent.getSerializableExtra(DATA_LOG_UUID);
                 if (logUuid == null) throw new IllegalArgumentException();
 
-                timestamp = (UnsignedInteger) intent.getSerializableExtra(DATA_LOG_TIMESTAMP);
+                timestamp = (Long) intent.getSerializableExtra(DATA_LOG_TIMESTAMP);
                 if (timestamp == null) throw new IllegalArgumentException();
 
-                tag = (UnsignedInteger) intent.getSerializableExtra(DATA_LOG_TAG);
+                tag = (Long) intent.getSerializableExtra(DATA_LOG_TAG);
                 if (tag == null) throw new IllegalArgumentException();
 
                 if (intent.getAction() == INTENT_DL_RECEIVE_DATA) {

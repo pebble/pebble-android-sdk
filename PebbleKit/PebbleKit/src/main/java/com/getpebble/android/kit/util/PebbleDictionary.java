@@ -209,15 +209,16 @@ public class PebbleDictionary implements Iterable<PebbleTuple> {
     }
 
     /**
-     * Returns the unsigned integer to which the specified key is mapped, or null if the key does not exist in this
-     * dictionary.
+     * Returns the unsigned integer as a long to which the specified key is mapped, or null if the key does not exist in this
+     * dictionary. We are using the Long type here so that we can remove the guava dependency. This is done so that we dont
+     * have incompatibility issues with the UnsignedInteger class from the Holo application, which uses a newer version of Guava.
      *
      * @param key
      *         key whose associated value is to be returned
      *
      * @return value to which the specified key is mapped
      */
-    public Long getUnsignedInteger(int key) {
+    public Long getUnsignedIntegerAsLong (int key) {
         PebbleTuple tuple = getTuple(key, PebbleTuple.TupleType.UINT);
         if (tuple == null) {
             return null;
