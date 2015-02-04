@@ -1,11 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 14
-    buildToolsVersion "20.0.0"
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "com.getpebble.android.kit"
+        minSdkVersion 14
+        targetSdkVersion 21
     }
 
     lintOptions {
