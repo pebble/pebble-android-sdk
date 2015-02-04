@@ -3,4 +3,9 @@
       package="com.getpebble.android.kit"
       android:versionCode="1"
       android:versionName="1.0">
-</manifest> 
+
+      <uses-sdk
+          android:minSdkVersion="14"
+          android:targetSdkVersion="21" />
+          
+</manifest>
