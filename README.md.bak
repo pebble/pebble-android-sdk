@@ -68,7 +68,7 @@ In Android Studio, or on any Gradle project, you can add PebbleKit Android in
 your `app/build.gradle` file:
 
     dependencies {
-        compile 'com.getpebble:pebblekit:3.0.0@aar'
+        compile 'com.getpebble:pebblekit:PEBBLEKIT_VERSION@aar'
     }
 
 Make sure that you also include a reference to the Sonatype OSS Repository:
@@ -83,7 +83,7 @@ Make sure that you also include a reference to the Sonatype OSS Repository:
 To use PebbleKit in the Eclipse IDE you must import the `.jar` file that
 contains the PebbleKit Android SDK. To install, follow the instructions below:
 
-1. Download the `pebblekit-3.0.0-eclipse.jar` file from
+1. Download the `pebblekit-PEBBLEKIT_VERSION-eclipse.jar` file from
 [Sonatype][jar-download].
 
 2. Add the file to your Android project in the `libs` folder alongside the
@@ -100,7 +100,7 @@ If you are using Maven, you can add the following dependency in your `pom.xml`:
     <dependency>
         <groupId>com.getpebble</groupId>
         <artifactId>pebblekit</artifactId>
-        <version>3.0.0</version>
+        <version>PEBBLEKIT_VERSION</version>
         <type>aar</type>
     </dependency>
 
@@ -145,6 +145,6 @@ channel](http://developer.getpebble.com/blog/2014/06/12/Android-Beta-Channel/)).
 
  - First release of 2.0 SDK with the new DataLogging API
 
-[jar-download]: https://oss.sonatype.org/service/local/repositories/releases/content/com/getpebble/pebblekit/3.0.0/pebblekit-3.0.0-eclipse.jar
-[aar-download]: https://oss.sonatype.org/service/local/repositories/releases/content/com/getpebble/pebblekit/3.0.0/pebblekit-3.0.0.aar
+[jar-download]: https://oss.sonatype.org/service/local/repositories/releases/content/com/getpebble/pebblekit/PEBBLEKIT_VERSION/pebblekit-PEBBLEKIT_VERSION-eclipse.jar
+[aar-download]: https://oss.sonatype.org/service/local/repositories/releases/content/com/getpebble/pebblekit/PEBBLEKIT_VERSION/pebblekit-PEBBLEKIT_VERSION.aar
 [readme-android]: https://github.com/pebble/pebble-sdk-examples/blob/master/README-ANDROID.txt

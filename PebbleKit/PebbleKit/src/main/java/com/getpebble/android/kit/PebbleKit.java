@@ -98,9 +98,7 @@ public final class PebbleKit {
     public static boolean isWatchConnected(final Context context) {
 		Cursor c = null;
 		try {
-			c = context.getContentResolver().query(
-							Uri.parse("content://com.getpebble.android.provider/state"), null, null,
-							null, null);
+            c = queryProvider(context);
 			if (c == null || !c.moveToNext()) {
 				return false;
 			}
@@ -127,9 +125,7 @@ public final class PebbleKit {
     public static boolean areAppMessagesSupported(final Context context) {
         Cursor c = null;
 		try {
-            c = context.getContentResolver().query(
-                        Uri.parse("content://com.getpebble.android.provider/state"), null, null,
-                        null, null);
+            c = queryProvider(context);
 			if (c == null || !c.moveToNext()) {
 				return false;
 			}
@@ -156,9 +152,7 @@ public final class PebbleKit {
     public static FirmwareVersionInfo getWatchFWVersion(final Context context) {
         Cursor c = null;
 		try {
-            c = context.getContentResolver().query(
-                        Uri.parse("content://com.getpebble.android.provider/state"), null, null,
-                        null, null);
+            c = queryProvider(context);
 			if (c == null || !c.moveToNext()) {
 				return null;
 			}
@@ -191,9 +185,7 @@ public final class PebbleKit {
     public static boolean isDataLoggingSupported(final Context context) {
         Cursor c = null;
 		try {
-            c = context.getContentResolver().query(
-                        Uri.parse("content://com.getpebble.android.provider/state"),
-                        null, null, null, null);
+            c = queryProvider(context);
 			if (c == null || !c.moveToNext()) {
 				return false;
 			}
@@ -933,5 +925,30 @@ public final class PebbleKit {
         public final String getTag() {
             return tag;
         }
+    }
+
+    /**
+     * Query the Pebble ContentProvider - utility method for various PebbleKit helper methods
+     *
+     * This attempts first to query the Basalt app provider, then if that is non-existant or disconnected
+     * queries the primary (i.e. original) provider authority
+     */
+    private static Cursor queryProvider(final Context context) {
+        Cursor c = context.getContentResolver().query(Constants.URI_CONTENT_BASALT, null, null, null, null);
+        if (c != null) {
+            if (c.moveToFirst()) {
+                // If Basalt app is connected, talk to that (return the open cursor)
+                if (c.getInt(KIT_STATE_COLUMN_CONNECTED) == 1) {
+                	c.moveToPrevious();
+                    return c;
+                }
+            }
+            // Else close the cursor and try the primary authority
+            c.close();
+        }
+
+        c = context.getContentResolver().query(Constants.URI_CONTENT_PRIMARY, null, null, null, null);
+        // Do nothing with this cursor - the calling method will check it for whatever it is looking for
+        return c;
     }
 }
