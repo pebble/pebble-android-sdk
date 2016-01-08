@@ -102,19 +102,21 @@ final class PebbleTuple {
     }
 
     static enum TupleType {
-        BYTES(0),
-        STRING(1),
-        UINT(2),
-        INT(3);
+        BYTES(0, "bytes"),
+        STRING(1, "string"),
+        UINT(2, "uint"),
+        INT(3, "int");
 
         public final byte ord;
+        private String name;
 
-        private TupleType(int ord) {
+        private TupleType(int ord, String name) {
             this.ord = (byte) ord;
+            this.name = name;
         }
 
         public String getName() {
-            return name().toLowerCase();
+            return name;
         }
     }
 }
