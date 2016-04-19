@@ -3,13 +3,14 @@ package com.getpebble.android.kit.util;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Locale;
 
 /**
  * A key-value pair stored in a {@link PebbleDictionary}.
  *
  * @author zulak@getpebble.com
  */
-final class PebbleTuple {
+public class PebbleTuple {
 
     private static final Charset UTF8 = Charset.forName("UTF-8");
 
@@ -114,7 +115,7 @@ final class PebbleTuple {
         }
 
         public String getName() {
-            return name().toLowerCase();
+            return name().toLowerCase(Locale.US);
         }
     }
 }
