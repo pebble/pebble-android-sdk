@@ -13,35 +13,24 @@ PebbleKit Android provides a convenience layer on top of those intents.
 ## Documentation
 
  - [Using PebbleKit
-   Android](http://developer.getpebble.com/guides/mobile-apps/android) describes
+   Android](http://developer.pebble.com/guides/communication/using-pebblekit-android) describes
    how to use PebbleKit Android in your application.
  - [PebbleKit Android API
-   Reference](http://developer.getpebble.com/docs/android)
+   Reference](http://developer.getpebble.com/docs/pebblekit-android)
 
 ## Examples
 
 All Pebble examples are now [available on
-GitHub](https://github.com/pebble/pebble-sdk-examples).
+GitHub](https://github.com/pebble-examples).
 
 We provide several examples of Android application communicating with Pebble:
 
- - The [weather
-   demo](https://github.com/pebble/pebble-sdk-examples/tree/master/weather-demo/WeatherDemo-Android)
-   shows how to build an Android application that fetches the weather from the
-   Internet and sends it to an app on Pebble ([using the AppSync
-   framework](http://developer.getpebble.com/guides/pebble-apps/communications/appsync/)).
  - The [Sports
-   demo](https://github.com/pebble/pebble-sdk-examples/tree/master/sports-demo/SportsDemo-Android)
+   demo](https://github.com/pebble-examples/pebblekit-sports-api-demo/tree/master/Android/PebbleKitSportsAPIDemo)
    shows how to build an Android application that starts and communicates with
    the Sports app embedded in all Pebbles.
- - The [Golf
-   demo](https://github.com/pebble/pebble-sdk-examples/tree/master/golf-demo/GolfDemo-Android)
-   shows how to build an Android application that starts and communicates with
-   the Golf app embedded in all Pebbles.
- - The [Ocean Survey
-   demo](https://github.com/pebble/pebble-sdk-examples/tree/master/data-logging-demo/OceanSurveyDemo-Android)
-   shows how to build an Android application that leverages data logging to
-   receive information pushed by a Pebble app.
+ - The [PebbleKit Android Example](https://github.com/pebble-examples/pebblekit-android-example)
+   shows how to perform basic use of AppMessage between a Pebble watchapp and an Android companion app.
 
 If you would like to use Eclipse to compile the examples, be sure to review the
 [`README-ANDROID.txt`][readme-android] file which details how to build and run Pebble Android
@@ -68,7 +57,7 @@ In Android Studio, or on any Gradle project, you can add PebbleKit Android in
 your `app/build.gradle` file:
 
     dependencies {
-        compile 'com.getpebble:pebblekit:3.1.0@aar'
+        compile 'com.getpebble:pebblekit:PEBBLEKIT_VERSION@aar'
     }
 
 Make sure that you also include a reference to the Sonatype OSS Repository:
@@ -83,7 +72,7 @@ Make sure that you also include a reference to the Sonatype OSS Repository:
 To use PebbleKit in the Eclipse IDE you must import the `.jar` file that
 contains the PebbleKit Android SDK. To install, follow the instructions below:
 
-1. Download the `pebblekit-3.1.0-eclipse.jar` file from
+1. Download the `pebblekit-PEBBLEKIT_VERSION-eclipse.jar` file from
 [Sonatype][jar-download].
 
 2. Add the file to your Android project in the `libs` folder alongside the
@@ -100,7 +89,7 @@ If you are using Maven, you can add the following dependency in your `pom.xml`:
     <dependency>
         <groupId>com.getpebble</groupId>
         <artifactId>pebblekit</artifactId>
-        <version>3.1.0</version>
+        <version>PEBBLEKIT_VERSION</version>
         <type>aar</type>
     </dependency>
 
@@ -112,6 +101,11 @@ and add it directly into your project.
 *Note: The AAR file format is currently not supported by Eclipse.*
 
 ## Changelog
+
+### 3.1.0 - April 2016
+
+- Fixes a crash which could happen in some Locales
+- Makes `PebbleTuple` public and non-`final`
 
 ### 3.0.0 - March 2015
 
@@ -145,6 +139,5 @@ channel](http://developer.getpebble.com/blog/2014/06/12/Android-Beta-Channel/)).
 
  - First release of 2.0 SDK with the new DataLogging API
 
-[jar-download]: https://oss.sonatype.org/service/local/repositories/releases/content/com/getpebble/pebblekit/3.1.0/pebblekit-3.1.0-eclipse.jar
-[aar-download]: https://oss.sonatype.org/service/local/repositories/releases/content/com/getpebble/pebblekit/3.1.0/pebblekit-3.1.0.aar
-[readme-android]: https://github.com/pebble/pebble-sdk-examples/blob/master/README-ANDROID.txt
+[jar-download]: https://oss.sonatype.org/service/local/repositories/releases/content/com/getpebble/pebblekit/PEBBLEKIT_VERSION/pebblekit-PEBBLEKIT_VERSION-eclipse.jar
+[aar-download]: https://oss.sonatype.org/service/local/repositories/releases/content/com/getpebble/pebblekit/PEBBLEKIT_VERSION/pebblekit-PEBBLEKIT_VERSION.aar
