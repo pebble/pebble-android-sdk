@@ -32,10 +32,6 @@ We provide several examples of Android application communicating with Pebble:
  - The [PebbleKit Android Example](https://github.com/pebble-examples/pebblekit-android-example)
    shows how to perform basic use of AppMessage between a Pebble watchapp and an Android companion app.
 
-If you would like to use Eclipse to compile the examples, be sure to review the
-[`README-ANDROID.txt`][readme-android] file which details how to build and run Pebble Android
-examples in Eclipse.
-
 ## Using PebbleKit Android
 
 As of version 2.5, PebbleKit Android is distributed as a library on the
@@ -57,7 +53,7 @@ In Android Studio, or on any Gradle project, you can add PebbleKit Android in
 your `app/build.gradle` file:
 
     dependencies {
-        compile 'com.getpebble:pebblekit:PEBBLEKIT_VERSION@aar'
+        compile 'com.getpebble:pebblekit:3.1.0@aar'
     }
 
 Make sure that you also include a reference to the Sonatype OSS Repository:
@@ -72,7 +68,7 @@ Make sure that you also include a reference to the Sonatype OSS Repository:
 To use PebbleKit in the Eclipse IDE you must import the `.jar` file that
 contains the PebbleKit Android SDK. To install, follow the instructions below:
 
-1. Download the `pebblekit-PEBBLEKIT_VERSION-eclipse.jar` file from
+1. Download the `pebblekit-3.1.0-eclipse.jar` file from
 [Sonatype][jar-download].
 
 2. Add the file to your Android project in the `libs` folder alongside the
