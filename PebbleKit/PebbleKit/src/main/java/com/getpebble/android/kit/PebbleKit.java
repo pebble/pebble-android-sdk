@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.util.Base64;
 import android.util.Log;
 import com.getpebble.android.kit.Constants.*;
@@ -31,7 +30,7 @@ public final class PebbleKit {
     /**
      * The Constant ICON_MAX_DIMENSIONS.
      */
-    private static final int ICON_MAX_DIMENSIONS = 32;
+    private static final int ICON_MAX_DIMENSIONS = 25;
 
     /**
      * Instantiates a new pebble kit.
@@ -73,7 +72,7 @@ public final class PebbleKit {
 
         if (icon.getHeight() > ICON_MAX_DIMENSIONS || icon.getWidth() > ICON_MAX_DIMENSIONS) {
             throw new IllegalArgumentException(String.format(
-                    "app icon exceeds maximum dimensions (32px x 32px); got (%dpx x %dpx)",
+                    "app icon exceeds maximum dimensions (25px x 25px); got (%dpx x %dpx)",
                     icon.getWidth(), icon.getHeight()));
         }
 

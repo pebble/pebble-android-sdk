@@ -169,7 +169,7 @@ public final class Constants {
     public static final int SPORTS_DISTANCE_KEY = 0x01;
     /**
      * The PebbleDictionary key corresponding to the 'data' field sent to the Sports watch-app. The data field is paired
-     * with a variable label and can be used to display any data.
+     * with the label specified by SPORTS_LABEL_KEY and can be used to display speed or pace data.
      */
     public static final int SPORTS_DATA_KEY = 0x02;
     /**
@@ -187,6 +187,21 @@ public final class Constants {
      * controls the label above the 'data' field.
      */
     public static final int SPORTS_LABEL_KEY = 0x05;
+    /**
+     * The PebbleDictionary key corresponding to the 'heart rate' field sent to the Sports watch-app. The heart rate
+     * field controls the data displayed in the scrollable field containing heart rate bpm.
+     */
+    public static final int SPORTS_HR_BPM_KEY = 0x06;
+    /**
+     * The PebbleDictionary key corresponding to the custom label field sent to the Sports watch-app. This label field
+     * controls the label above the custom value field.
+     */
+    public static final int SPORTS_CUSTOM_LABEL_KEY = 0x07;
+    /**
+     * The PebbleDictionary key corresponding to the custom value sent to the Sports watch-app. The custom value field
+     * controls the data displayed in the scrollable field containing custom data.
+     */
+    public static final int SPORTS_CUSTOM_VALUE_KEY = 0x08;
 
     /**
      * PebbleDictionary value corresponding to 'imperial' units.
