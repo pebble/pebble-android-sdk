@@ -53,7 +53,7 @@ In Android Studio, or on any Gradle project, you can add PebbleKit Android in
 your `app/build.gradle` file:
 
     dependencies {
-        compile 'com.getpebble:pebblekit:4.0.0@aar'
+        compile 'com.getpebble:pebblekit:4.0.1@aar'
     }
 
 Make sure that you also include a reference to the Sonatype OSS Repository:
@@ -68,7 +68,7 @@ Make sure that you also include a reference to the Sonatype OSS Repository:
 To use PebbleKit in the Eclipse IDE you must import the `.jar` file that
 contains the PebbleKit Android SDK. To install, follow the instructions below:
 
-1. Download the `pebblekit-4.0.0-eclipse.jar` file from
+1. Download the `pebblekit-4.0.1-eclipse.jar` file from
 [Sonatype][jar-download].
 
 2. Add the file to your Android project in the `libs` folder alongside the
@@ -85,7 +85,7 @@ If you are using Maven, you can add the following dependency in your `pom.xml`:
     <dependency>
         <groupId>com.getpebble</groupId>
         <artifactId>pebblekit</artifactId>
-        <version>4.0.0</version>
+        <version>4.0.1</version>
         <type>aar</type>
     </dependency>
 
@@ -97,6 +97,10 @@ and add it directly into your project.
 *Note: The AAR file format is currently not supported by Eclipse.*
 
 ## Changelog
+
+### 4.0.1 - November 2016
+- Fixed bug that could cause apps to not properly update the speed/pace label
+  when using the `SportsState` helper in the Sports API.
 
 ### 4.0.0 - November 2016
 - Added new APIs for sending custom HR data and a custom label/value from a
@@ -144,5 +148,5 @@ channel](http://developer.getpebble.com/blog/2014/06/12/Android-Beta-Channel/)).
 
  - First release of 2.0 SDK with the new DataLogging API
 
-[jar-download]: https://oss.sonatype.org/service/local/repositories/releases/content/com/getpebble/pebblekit/4.0.0/pebblekit-4.0.0-eclipse.jar
-[aar-download]: https://oss.sonatype.org/service/local/repositories/releases/content/com/getpebble/pebblekit/4.0.0/pebblekit-4.0.0.aar
+[jar-download]: https://oss.sonatype.org/service/local/repositories/releases/content/com/getpebble/pebblekit/4.0.1/pebblekit-4.0.1-eclipse.jar
+[aar-download]: https://oss.sonatype.org/service/local/repositories/releases/content/com/getpebble/pebblekit/4.0.1/pebblekit-4.0.1.aar

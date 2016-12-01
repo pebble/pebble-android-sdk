@@ -162,7 +162,7 @@ public class SportsState {
     /**
      * Set the current heart rate in beats per minute.
      *
-     * Currently there’s no way to stop sending heart rate values if one heart rate
+     * Currently there is no way to stop sending heart rate values if one heart rate
      * value was sent. The last value will be shown in the UI.
      *
      * @param heartBPM
@@ -241,7 +241,7 @@ public class SportsState {
         SportsState previousState = this.previousState;
         boolean firstMessage = false;
         if (previousState == null) {
-            previousState = this.previousState = new SportsHelper();
+            previousState = this.previousState = new SportsState();
             firstMessage = true;
         }
 
@@ -255,18 +255,14 @@ public class SportsState {
             message.addString(Constants.SPORTS_DISTANCE_KEY, convertDistanceToString(getDistance()));
         }
         if (this.paceInSec != null) {
-            if (previousState.speed != null) {
-                message.addUint8(Constants.SPORTS_LABEL_KEY, (byte)Constants.SPORTS_DATA_PACE);
-            }
+            message.addUint8(Constants.SPORTS_LABEL_KEY, (byte)Constants.SPORTS_DATA_PACE);
             if (getPaceInSec() != previousState.getPaceInSec()) {
                 previousState.setPaceInSec(getPaceInSec());
                 message.addString(Constants.SPORTS_DATA_KEY, convertSecondsToString(getPaceInSec()));
             }
         }
         if (this.speed != null) {
-            if (previousState.paceInSec != null) {
-                message.addUint8(Constants.SPORTS_LABEL_KEY, (byte)Constants.SPORTS_DATA_SPEED);
-            }
+            message.addUint8(Constants.SPORTS_LABEL_KEY, (byte)Constants.SPORTS_DATA_SPEED);
             if (getSpeed() != previousState.getSpeed()) {
                 previousState.setSpeed(getSpeed());
                 message.addString(Constants.SPORTS_DATA_KEY, convertDistanceToString(getSpeed()));
@@ -311,7 +307,7 @@ public class SportsState {
         int minutes = remainder / 60;
         int seconds = remainder - (minutes * 60);
         if (hours > 0) {
-            return String.format("%02d:%02d:%02d", hours, minutes, seconds);
+            return String.format("%2d:%02d:%02d", hours, minutes, seconds);
         } else {
             return String.format("%02d:%02d", minutes, seconds);
         }
@@ -327,6 +323,6 @@ public class SportsState {
      * @return the formatted decimal number
      */
     private static String convertDistanceToString(float distance) {
-        return String.format("%0.1f", distance);
+        return String.format("%.1f", distance);
     }
 }

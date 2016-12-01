@@ -41,7 +41,7 @@ public final class PebbleKit {
 
     /**
      * Send a message to the connected Pebble to "customize" a built-in PebbleKit watch-app. This is intended to allow
-     * third-party Android applications to apply custom branding (both name & icon) on the watch without needing to
+     * third-party Android applications to apply custom branding (both name and icon) on the watch without needing to
      * distribute a complete watch-app.
      *
      * @param context
@@ -88,7 +88,7 @@ public final class PebbleKit {
      *
      * @param context
      *         The Android context used to perform the query.
-     *         <p/>
+     *
      *         <em>Protip:</em> You probably want to use your ApplicationContext here.
      *
      * @return true if an active connection to the watch currently exists, otherwise false. This method will also return
@@ -115,7 +115,7 @@ public final class PebbleKit {
      *
      * @param context
      *         The Android context used to perform the query.
-     *         <p/>
+     *
      *         <em>Protip:</em> You probably want to use your ApplicationContext here.
      *
      * @return true if the watch supports PebbleKit messages, otherwise false. This method will always return false if
@@ -142,7 +142,7 @@ public final class PebbleKit {
      *
      * @param context
      *         The Android context used to perform the query.
-     *         <p/>
+     *
      *         <em>Protip:</em> You probably want to use your ApplicationContext here.
      *
      * @return null if the watch is disconnected or we can't get the version. Otherwise,
@@ -175,7 +175,7 @@ public final class PebbleKit {
      *
      * @param context
      *         The Android context used to perform the query.
-     *         <p/>
+     *
      *         <em>Protip:</em> You probably want to use your ApplicationContext here.
      *
      * @return true if the watch supports PebbleKit messages, otherwise false. This method will always return false if
@@ -249,7 +249,7 @@ public final class PebbleKit {
     /**
      * Send one-or-more key-value pairs to the watch-app identified by the provided UUID. This is the primary method for
      * sending data from the phone to a connected Pebble.
-     * <p/>
+     *
      * The watch-app and phone-app must agree of the set and type of key-value pairs being exchanged. Type mismatches or
      * missing keys will cause errors on the receiver's end.
      *
@@ -273,7 +273,7 @@ public final class PebbleKit {
 
     /**
      * Send one-or-more key-value pairs to the watch-app identified by the provided UUID.
-     * <p/>
+     *
      * The watch-app and phone-app must agree of the set and type of key-value pairs being exchanged. Type mismatches or
      * missing keys will cause errors on the receiver's end.
      *
@@ -369,7 +369,7 @@ public final class PebbleKit {
 
     /**
      * A convenience function to assist in programatically registering a broadcast receiver for the 'CONNECTED' intent.
-     * <p/>
+     *
      * To avoid leaking memory, activities registering BroadcastReceivers <em>must</em> unregister them in the
      * Activity's {@link android.app.Activity#onPause()} method.
      *
@@ -390,7 +390,7 @@ public final class PebbleKit {
     /**
      * A convenience function to assist in programatically registering a broadcast receiver for the 'DISCONNECTED'
      * intent.
-     * <p/>
+     *
      * Go avoid leaking memory, activities registering BroadcastReceivers <em>must</em> unregister them in the
      * Activity's {@link android.app.Activity#onPause()} method.
      *
@@ -410,7 +410,7 @@ public final class PebbleKit {
 
     /**
      * A convenience function to assist in programatically registering a broadcast receiver for the 'RECEIVE' intent.
-     * <p/>
+     *
      * To avoid leaking memory, activities registering BroadcastReceivers <em>must</em> unregister them in the
      * Activity's {@link android.app.Activity#onPause()} method.
      *
@@ -432,7 +432,7 @@ public final class PebbleKit {
     /**
      * A convenience function to assist in programatically registering a broadcast receiver for the 'RECEIVE_ACK'
      * intent.
-     * <p/>
+     *
      * To avoid leaking memory, activities registering BroadcastReceivers <em>must</em> unregister them in the
      * Activity's {@link android.app.Activity#onPause()} method.
      *
@@ -453,7 +453,7 @@ public final class PebbleKit {
     /**
      * A convenience function to assist in programatically registering a broadcast receiver for the 'RECEIVE_NACK'
      * intent.
-     * <p/>
+     *
      * To avoid leaking memory, activities registering BroadcastReceivers <em>must</em> unregister them in the
      * Activity's {@link android.app.Activity#onPause()} method.
      *
@@ -850,7 +850,7 @@ public final class PebbleKit {
     /**
      * A convenience function to assist in programatically registering a broadcast receiver for the 'DATA_AVAILABLE'
      * intent.
-     * <p/>
+     *
      * To avoid leaking memory, activities registering BroadcastReceivers <em>must</em> unregister them in the
      * Activity's {@link android.app.Activity#onPause()} method.
      *
@@ -876,7 +876,7 @@ public final class PebbleKit {
     /**
      * A convenience function to emit an intent to pebble.apk to request the data logs for a particular app. If data
      * is available, pebble.apk will advertise the data via 'INTENT_DL_RECEIVE_DATA' intents.
-     * <p/>
+     *
      * To avoid leaking memory, activities registering BroadcastReceivers <em>must</em> unregister them in the
      * Activity's {@link android.app.Activity#onPause()} method.
      *
@@ -884,8 +884,6 @@ public final class PebbleKit {
      *         The context in which to register the BroadcastReceiver.
      * @param appUuid
      *         The app for which to request data logs.
-     *
-     * @return The registered receiver.
      *
      * @see Constants#INTENT_DL_RECEIVE_DATA
      * @see Constants#INTENT_DL_REQUEST_DATA

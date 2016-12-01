@@ -98,6 +98,10 @@ and add it directly into your project.
 
 ## Changelog
 
+### 4.0.1 - November 2016
+- Fixed bug that could cause apps to not properly update the speed/pace label
+  when using the `SportsState` helper in the Sports API.
+
 ### 4.0.0 - November 2016
 - Added new APIs for sending custom HR data and a custom label/value from a
   mobile companion app, using the Sports API.

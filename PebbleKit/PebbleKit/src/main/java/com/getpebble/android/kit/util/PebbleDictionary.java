@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * A collection of key-value pairs of heterogeneous types. PebbleDictionaries are the primary structure used to exchange
  * data between the phone and watch.
- * <p/>
+ *
  * To accommodate the mixed-types contained within a PebbleDictionary, an internal JSON representation is used when
  * exchanging the dictionary between Android processes.
  *
